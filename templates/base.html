@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Feedback</title>
+</head>
+<body>
+    <nav>
+        <a>Flask Feedback</a>
+        <ul>
+            <li>
+                {% if 'username' in session %}
+                <a>Logout</a>
+                {% else %}
+                <a>Login</a>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+    <section>
+        {% for message in get_flashed_messages() %}
+        <section>{{ message }}</section>
+        {% endfor %}
+        {% block content %}
+        {% endblock %}
+    </section>
+</body>
+</html>
